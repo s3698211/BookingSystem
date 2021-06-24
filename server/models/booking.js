@@ -2,14 +2,11 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 const BookingSchema = new Schema({
-  date: Date,
+  // date: Date,
   start: String,
   end: String,
   owner: String,
-  belongTo: {
-    type: Schema.Types.ObjectId,
-    ref: "Stadium",
-  },
+  stadium: String,
 });
 
 const Booking = mongoose.model("Booking", BookingSchema);

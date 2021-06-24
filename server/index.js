@@ -3,15 +3,16 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import stadium from "./routes/stadiums.js";
+import booking from "./routes/bookings.js";
 
 const app = express();
-
-app.use("/stadiums", stadium);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
+app.use("/stadiums", stadium);
+app.use("/bookings", booking);
 const CONNECTION_URL =
   "mongodb+srv://tohoangkhoi1999:Kingsbury22@cluster0.c7uer.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;

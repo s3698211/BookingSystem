@@ -6,6 +6,7 @@ import useStyles from "./styles";
 
 const StadiumsDashBoard = () => {
   const stadiums = useSelector((state) => state.stadiums);
+
   const classes = useStyles();
 
   console.log(stadiums);

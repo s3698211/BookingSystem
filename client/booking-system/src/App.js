@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
-import { getStadiums } from "./actions/stadiums";
+import { getStadiums } from "./actions/stadiumsAction";
 import StadiumsDashBoard from "./components/Stadiums/StadiumsDashBoard";
 import Form from "./components/Form/Form";
 import useStyles from "./styles";
@@ -12,7 +12,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getStadiums);
+    dispatch(getStadiums());
   }, []);
 
   return (
