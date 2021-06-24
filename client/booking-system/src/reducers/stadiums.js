@@ -1,7 +1,7 @@
 export default (stadiums = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return stadiums;
+      return action.payload;
     case "CREATE":
       return stadiums;
     default:
