@@ -20,9 +20,11 @@ export const createStadium = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
-export const getAllBooking = async (req, res) => {
-  let foundStadium = await Stadium.findById({ name: req.params.id }).populate(
-    "booking"
-  );
-  res.json(foundStadium);
+
+export const getStadiumBookings = async (req, res) => {
+  let foundStadium = await Stadium.findById({ _id: req.params.id })
+    .populate("booking")
+    .exec((err, bookings) => {
+      res.status(200).json(bookings);
+    });
 };

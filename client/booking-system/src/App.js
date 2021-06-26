@@ -1,42 +1,19 @@
-import React from "react";
-import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import BookingForm from "./components/Form/BookingForm";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar/navbar";
 
-import StadiumsDashBoard from "./components/Stadiums/StadiumsDashBoard";
-import Form from "./components/Form/Form";
-import useStyles from "./styles";
 const App = () => {
-  const classes = useStyles();
   return (
-    <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">
-          Stadiums
-        </Typography>
-        <img
-          className={classes.image}
-          src={process.env.PUBLIC_URL + "/562674.png"}
-          alt="OKLAH"
-          height="60"
-        />
-      </AppBar>
-      <Grow in>
-        <Container>
-          <Grid
-            container
-            justify="space-between"
-            alignItems="stretch"
-            spacing={3}
-          >
-            <Grid item xs={12} sm={7}>
-              <StadiumsDashBoard />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form />
-            </Grid>
-          </Grid>
-        </Container>
-      </Grow>
-    </Container>
+    <BrowserRouter>
+      <Navbar />
+
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/booking" exact component={BookingForm} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 export default App;
