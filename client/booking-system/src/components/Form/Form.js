@@ -30,16 +30,7 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">Creating a Stadium</Typography>
-        <TextField
-          name="id"
-          variant="outlined"
-          label="Id"
-          fullWidth
-          value={stadiumData.id}
-          onChange={(e) => {
-            setStadiumData({ ...stadiumData, id: e.target.value });
-          }}
-        />
+
         <TextField
           name="name"
           variant="outlined"

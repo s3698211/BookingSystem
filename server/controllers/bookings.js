@@ -13,20 +13,19 @@ export const getAllBookings = async (req, res) => {
 export const createBooking = async (req, res) => {
   const booking = req.body;
   const newBooking = new Booking(booking);
-  try {
-    await Stadium.findOne({ name: booking.stadium }, async (err, result) => {
-      if (err) {
-        res.status(404).json("The stadium does not exist");
-      }
+
+  await Stadium.findOne({ name: booking.stadiumName }, async (err, result) => {
+    //if the stadium is not exist, return an err message
+    if (result == null) {
+      res.status(400).json("Cannot find stadium");
+    } else {
       result.calendar.push(newBooking);
-      await result.save();
-      await newBooking.save();
-      console.log(result.calendar);
-      res.status(200).json(newBooking);
-    });
-  } catch (error) {
-    res.status(400).json(error.message);
-  }
+      // await result.save();
+      // await newBooking.save();
+      // console.log(result.calendar);
+      return res.status(200).json(newBooking);
+    }
+  });
 };
 export const getBooking = async (req, res) => {
   try {

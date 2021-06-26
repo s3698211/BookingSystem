@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const StadiumSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   image: { type: String },
   likeCount: {
     type: Number,
